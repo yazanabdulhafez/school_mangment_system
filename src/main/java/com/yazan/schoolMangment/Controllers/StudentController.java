@@ -5,10 +5,11 @@ import com.yazan.schoolMangment.Models.Student;
 import com.yazan.schoolMangment.Repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Controller
@@ -18,6 +19,28 @@ public class StudentController {
 
     @Autowired
     StudentRepository studentRepository;
+
+
+    @GetMapping("/getStudents")
+    public String getStudends(Model model){
+     List<Student> students= (List<Student>) studentRepository.findAll();
+     model.addAttribute("students",students);
+     return "students";
+    }
+
+    @GetMapping("/getStudent/{id}")
+    public String getStudend(Model model,@PathVariable Long id){
+        Optional<Student> student=  studentRepository.findById(id);
+        model.addAttribute("student",student);
+        return "student";
+    }
+
+    @GetMapping("/removeAllStu")
+    public String removeAllStudents(){
+        studentRepository.deleteAll();
+        return "students";
+    }
+
 
     @GetMapping("/addStu")
     public String addStudents(){
