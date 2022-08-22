@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main>
+    <h1>Form</h1>
+    <fieldset>
+        <legend>Add New Student</legend>
+        username,password,fullName,email,grade,age,address
+        <form action="#" th:action="@{/addStudent}" th:object="${students}" method="post">
+            <p>User Name: <input type="text" th:field="*{username}" /></p>
+            <p>Password: <input type="text" th:field="*{password}" /></p>
+            <p>Full Name: <input type="text" th:field="*{fullName}" /></p>
+            <p>Email <input type="text" th:field="*{email}" /></p>
+            <p>Grade <input type="text" th:field="*{grade}" /></p>
+            <p>Age <input type="number" th:field="*{age}" /></p>
+            <p>Address <input type="text" th:field="*{address}" /></p>
+            <p><input type="submit" value="Add Student" /> </p>
+            <br>
+            <br>
+        </form>
+
+    </fieldset>
+</main>
+</body>
+</html>

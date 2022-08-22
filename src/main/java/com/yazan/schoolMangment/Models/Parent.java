@@ -11,7 +11,6 @@ public class Parent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String fullName;
     private String relation;
     private String mobileNumber;

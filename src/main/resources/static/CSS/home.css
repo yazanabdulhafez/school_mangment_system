@@ -1,0 +1,13 @@
+.hero_image{
+background: url(../Images/school.jpg) no-repeat center center;
+background-size: cover;
+height: 60vh;
+width:100%;
+overflow: hidden;
+
+}
+
+.three-cards{
+margin-top:2rem;
+margin-bottom:2rem;
+}
