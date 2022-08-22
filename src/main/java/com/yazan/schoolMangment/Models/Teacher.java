@@ -1,14 +1,19 @@
 package com.yazan.schoolMangment.Models;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
-;
+import java.util.Collection;
 
 @Entity
-public class Teacher {
+public class Teacher  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String username;
+    private String password;
     private String fullName;
     private int age;
     private String mobileNumber;
@@ -16,13 +21,15 @@ public class Teacher {
     private double salary;
     private int experience;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="subject_id", referencedColumnName = "id")
-    private Course course;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name="subject_id", referencedColumnName = "id")
+//    private Course course;
 
     public Teacher(){}
 
-    public Teacher(String fullName, int age, String mobileNumber, String email, double salary, int experience) {
+    public Teacher(String username,String password,String fullName, int age, String mobileNumber, String email, double salary, int experience) {
+        this.username=username;
+        this.password=password;
         this.fullName = fullName;
         this.age = age;
         this.mobileNumber = mobileNumber;
@@ -87,6 +94,15 @@ public class Teacher {
         this.experience = experience;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
     @Override
     public String toString() {
         return "Teacher{" +
@@ -97,7 +113,41 @@ public class Teacher {
                 ", email='" + email + '\'' +
                 ", salary=" + salary +
                 ", experience=" + experience +
-                ", course=" + course +
                 '}';
     }
+//
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return null;
+//    }
+//
+//    @Override
+//    public String getPassword() {
+//        return null;
+//    }
+//
+//    @Override
+//    public String getUsername() {
+//        return null;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isEnabled() {
+//        return true;
+//    }
 }

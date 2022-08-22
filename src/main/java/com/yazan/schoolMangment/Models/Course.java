@@ -1,18 +1,20 @@
 package com.yazan.schoolMangment.Models;
 
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
 public class Course {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private int chapters;
 
-    @OneToMany(mappedBy = "course")
-    private Set<Teacher> teachers;
+//    @OneToMany(mappedBy = "course")
+//    private Set<Teacher> teachers;
 
     public Course() {
 
@@ -53,7 +55,6 @@ public class Course {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", chapters=" + chapters +
-                ", teachers=" + teachers +
                 '}';
     }
 }
