@@ -108,8 +108,9 @@ public class StudentController {
         }
     }
 
-    @RequestMapping(value="/deleteStudent/{id}", method = RequestMethod.DELETE)
+//    @RequestMapping(value="/deleteStudent/{id}", method = RequestMethod.DELETE)
 //    @DeleteMapping("/deleteStudent/{id}")
+    @RequestMapping("/deleteStudent/{id}")
     public RedirectView deleteStudent(@PathVariable("id") Long id){
         try {
            studentsService.deleteStudent(id);
