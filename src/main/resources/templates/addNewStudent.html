@@ -3,24 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
 </head>
 <body>
+<div th:insert="fragments/header :: header"></div>
 <main>
     <h1>Form</h1>
     <fieldset>
         <legend>Add New Student</legend>
-        username,password,fullName,email,grade,age,address
+
         <form action="#" th:action="@{/addStudent}" th:object="${students}" method="post">
-            <p>User Name: <input type="text" th:field="*{username}" /></p>
-            <p>Password: <input type="text" th:field="*{password}" /></p>
-            <p>Full Name: <input type="text" th:field="*{fullName}" /></p>
-            <p>Email <input type="text" th:field="*{email}" /></p>
-            <p>Grade <input type="text" th:field="*{grade}" /></p>
-            <p>Age <input type="number" th:field="*{age}" /></p>
-            <p>Address <input type="text" th:field="*{address}" /></p>
-            <p><input type="submit" value="Add Student" /> </p>
-            <br>
-            <br>
+            <div class="row g-3">
+
+            <div class="mb-3 row">
+                <label for="username" class="col-sm-2 col-form-label">User Name:</label>
+                <div class="col-sm">
+                <input type="text" class="form-control" id="username" placeholder="username" th:field="*{username}">
+                </div>
+
+            </div>
+
+            <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="password" th:field="*{password}">
+                </div>
+            </div>
+
+             <div class="mb-3 row">
+                    <label for="fullName" class="col-sm-2 col-form-label">FullName</label>
+                    <div class="col-sm">
+                        <input type="text" class="form-control" id="fullName" placeholder="fullName" th:field="*{fullName}">
+                    </div>
+             </div>
+
+             <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="email" th:field="*{email}">
+                    </div>
+             </div>
+
+             <div class="row mb-3">
+                    <label for="inputGrade" class="col-sm-2 col-form-label">Grade</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputGrade" placeholder="grade" th:field="*{grade}">
+                    </div>
+             </div>
+
+             <div class="row mb-3">
+                    <label for="inputAge" class="col-sm-2 col-form-label">Age</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputAge" placeholder="age" th:field="*{age}">
+                    </div>
+             </div>
+
+             <div class="row mb-3">
+                    <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputAddress" placeholder="address" th:field="*{address}">
+                    </div>
+             </div>
+
+             <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Add Student</button>
+             </div>
+
+            </div>
+<!--            <p>User Name: <input type="text" th:field="*{username}" /></p>-->
+<!--            <p>Password: <input type="text" th:field="*{password}" /></p>-->
+<!--            <p>Full Name: <input type="text" th:field="*{fullName}" /></p>-->
+<!--            <p>Email <input type="text" th:field="*{email}" /></p>-->
+<!--            <p>Grade <input type="text" th:field="*{grade}" /></p>-->
+<!--            <p>Age <input type="number" th:field="*{age}" /></p>-->
+<!--            <p>Address <input type="text" th:field="*{address}" /></p>-->
+<!--            <p><input type="submit" value="Add Student" /> </p>-->
+<!--            <br>-->
+<!--            <br>-->
+
         </form>
 
     </fieldset>

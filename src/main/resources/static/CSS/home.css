@@ -1,13 +1,24 @@
 .hero_image{
-background: url(../Images/school.jpg) no-repeat center center;
-background-size: cover;
-height: 60vh;
+display:flex;
+justify-content:center;
+align-items:center;
+height: 35rem;
 width:100%;
 overflow: hidden;
 
 }
 
+.hero_image img{
+width:80%;
+height:30rem;
+}
+
 .three-cards{
 margin-top:2rem;
 margin-bottom:2rem;
+
+}
+
+.card{
+margin: 0 auto;
 }

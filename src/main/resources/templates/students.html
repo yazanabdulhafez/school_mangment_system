@@ -37,13 +37,22 @@
                     <td th:text="${student.getAge}">age</td>
                     <td th:text="${student.getAddress}">address</td>
                     <td>
-                        <form action="#" th:action="@{'/deleteStudent/{id}'(id=${student.getId()})}" th:method="delete" >
-                            <button type="submit" class="btn btn-danger">
-                                Delete
-                            </button>
-                        </form>
+<!--                        <form action="#" th:action="@{'/deleteStudent/{id}'(id=${student.getId()})}" th:method="delete" >-->
+<!--                            <button type="submit" class="btn btn-danger">-->
+<!--                                Delete-->
+<!--                            </button>-->
+<!--                        </form>-->
+
+<!--                        <form action="#" th:href="@{/updateStudent/{id}(id=${student.getId()})}" th:method="put" >-->
+<!--                            <button type="submit" class="btn btn-warning">-->
+<!--                                Update-->
+<!--                            </button>-->
+<!--                        </form>-->
+
+                    <a th:href="@{/deleteStudent/{id}(id=${student.getId()})}" class="btn btn-danger">Delete </a>
 <!--                    <a class="btn btn-danger" th:href="@{/deleteStudent/{id}(id=${student.getId()})}" role="button">Delete</a>-->
-<!--                    <a class="btn btn-warning" th:href="@{/updateStudent/{id}(id=${student.getId()})}" role="button">Update</a>-->
+                    <a class="btn btn-warning" th:href="@{/updateStudent/{id}(id=${student.getId()})}" role="button">Update</a>
+
                     </td>
 
                 </tr>
@@ -52,7 +61,7 @@
             </table>
 
             <h2>Add New Students</h2>
-            <a class="btn btn-primary" href="/addStudent" role="button">Link</a>
+            <a class="btn btn-primary" href="/addStudent" role="button">Add New Student</a>
 <!--            <nav aria-label="Page navigation" class="paging">-->
 <!--                <ul class="pagination" th:if="${students.page.totalPages > 1}">-->
 <!--                    <li class="page-item" th:classappend="${!students.paging.isPrevEnabled()? 'disabled' : ''}">-->
