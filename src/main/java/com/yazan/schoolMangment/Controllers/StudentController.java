@@ -2,9 +2,9 @@ package com.yazan.schoolMangment.Controllers;
 
 import com.yazan.schoolMangment.Models.Parent;
 import com.yazan.schoolMangment.Models.Student;
-import com.yazan.schoolMangment.Repositories.StudentRepository;
 import com.yazan.schoolMangment.Services.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 @Controller
 public class StudentController {
 
-    private static final Logger logger=Logger.getLogger(Student.class.getName());
+    private static final Logger logger=Logger.getLogger(StudentController.class.getName());
 
     @Autowired
     private StudentsService studentsService;
@@ -38,9 +38,8 @@ public class StudentController {
 
     @GetMapping("/Students")
     public String getStudends(Model model){
-     List<Student> students= (List<Student>) studentsService.getStudents();
-     model.addAttribute("students",students);
-     return "students";
+
+        return findPaginated(1, "username", "asc", model);
     }
 
     @GetMapping("/getStudent/{id}")
@@ -123,6 +122,28 @@ public class StudentController {
     @PutMapping("/updateStudent/{id}")
     public void updateStudent(@PathVariable Long id){
 
+    }
+
+    @GetMapping("/page/{pageNo}")
+    public String findPaginated(@PathVariable (value = "pageNo") int pageNo,
+                                @RequestParam("sortField") String sortField,
+                                @RequestParam("sortDir") String sortDir,
+                                Model model) {
+        int pageSize = 2;
+
+        Page<Student> page = studentsService.findPaginated(pageNo, pageSize, sortField, sortDir);
+        List<Student> listStudents = page.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+
+        model.addAttribute("students", listStudents);
+        return "students";
     }
 
 }
