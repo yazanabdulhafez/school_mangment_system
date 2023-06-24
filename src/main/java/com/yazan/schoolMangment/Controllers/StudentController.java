@@ -96,15 +96,16 @@ public class StudentController {
     }
 
     @PostMapping("/addStudent")
-    public String addStudentsForm(@ModelAttribute Student student, Model model) {
+    public RedirectView addStudentsForm(@ModelAttribute Student student, Model model) {
         try {
             studentsService.addStudent(student);
             model.addAttribute("students", student);
-            return "students";
+            return new RedirectView("/Students");
         } catch (Exception exception){
             logger.info(exception.getMessage());
-            return "error";
+            new RedirectView("/error");
         }
+        return null;
     }
 
 //    @RequestMapping(value="/deleteStudent/{id}", method = RequestMethod.DELETE)
@@ -113,7 +114,7 @@ public class StudentController {
     public RedirectView deleteStudent(@PathVariable("id") Long id){
         try {
            studentsService.deleteStudent(id);
-            return  new RedirectView("/students");
+            return  new RedirectView("/Students");
         }catch(Exception exception){
             return new RedirectView( "/error");
         }
@@ -129,7 +130,7 @@ public class StudentController {
                                 @RequestParam("sortField") String sortField,
                                 @RequestParam("sortDir") String sortDir,
                                 Model model) {
-        int pageSize = 2;
+        int pageSize = 3;
 
         Page<Student> page = studentsService.findPaginated(pageNo, pageSize, sortField, sortDir);
         List<Student> listStudents = page.getContent();
